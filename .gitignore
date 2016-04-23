@@ -10,3 +10,4 @@
 /App_Web/vendor/
 /App_Web/bin/
 /App_Web/composer.phar
+/App_Web/.idea/*
