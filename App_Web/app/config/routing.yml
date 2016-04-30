@@ -1,7 +1,4 @@
-biaz_test:
-    resource: "@BIAZTestBundle/Resources/config/routing.yml"
+safe_parking:
+    resource: "@SafeParkingBundle/Resources/config/routing.yml"
     prefix:   /
 
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation

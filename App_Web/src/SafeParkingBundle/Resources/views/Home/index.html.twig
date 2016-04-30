@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Site de présentation de l'application Safe Parking">
+    <meta name="author" content="Driss BIAZ">
+
+    <title>Safe Parking</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css">
+
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}" type="text/css">
+
+    <!-- Plugin CSS -->
+    <!--<link rel="stylesheet" href="css/animate.min.css" type="text/css">-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ asset('css/home/creative.css') }}" type="text/css">
+
+    <!-- Extra CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/home/extras.css') }}">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top">
+
+    <!-- Code pour la barre de navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Safe Parking</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#about">À propos</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#services">Services</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#download">Télécharger</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#portfolio">Développeurs</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <!-- Fin code navigation -->
+
+    <!-- Code pour le header de la page -->
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <img id="logo" class="img-responsive" src="{{ asset('img/logo.png') }}" />
+                <h1>Safe Parking, conçu pour vous trouver une place.</h1>
+                <hr>
+                <p>Donnez la main à notre application pour vous trouvez un parking sécurisé, rapidement et aux alentours de votre position. Plus besoin de chercher où garer votre voiture, Safe Parking le fait pour vous!</p>
+                <a href="#about" class="btn btn-primary btn-xl page-scroll">Connexion</a>
+                <a href="#about" class="btn btn-primary btn-xl page-scroll">Inscription</a>
+            </div>
+        </div>
+    </header>
+    <!-- Fin code header -->
+
+    <!-- Code pour la partie A propos -->
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Contexte de travail</h2>
+                    <hr class="light">
+                    <p class="text-faded">Cette application est le fruit du projet de fin d'étude du parcours informatique à l'Ecole Supérieure d'Ingénierie en Sciences Appliquées.</p>
+                    <a href="http://www.esisa.ac.ma/" class="btn btn-default btn-xl">ESISA</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Fin code a propos -->
+
+    <!-- Code pour la partie Services -->
+    <section id="services">
+        <div class="container">
+            <!-- First Featurette -->
+            <div class="featurette" id="about">
+                <img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">
+                <h2 class="featurette-heading">This First Heading
+                    <span class="text-muted">Will Catch Your Eye</span>
+                </h2>
+                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            </div>
+
+            <hr class="primary"/>
+
+            <!-- Second Featurette -->
+            <div class="featurette" id="services">
+                <img class="featurette-image img-circle img-responsive pull-left" src="http://placehold.it/500x500">
+                <h2 class="featurette-heading">The Second Heading
+                    <span class="text-muted">Is Pretty Cool Too.</span>
+                </h2>
+                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            </div>
+
+            <hr class="primary"/>
+
+            <!-- Third Featurette -->
+            <div class="featurette" id="contact">
+                <img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">
+                <h2 class="featurette-heading">The Third Heading
+                    <span class="text-muted">Will Seal the Deal.</span>
+                </h2>
+                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Fin code services -->
+
+    <!--Code pour la partie téléchargement de l'application mobile -->
+    <aside class="bg-dark" id="download">
+        <div class="container text-center">
+            <div class="call-to-action">
+                <h2>Utilisez notre application dès maintenant!</h2>
+                <a href="#" class="btn btn-default btn-xl wow tada">Téléchargez moi sur le play store!</a>
+            </div>
+        </div>
+    </aside>
+    <!-- Fin code téléchargement -->
+
+    <!-- Code pour la partie développeurs -->
+    <section class="no-padding" id="portfolio">
+
+
+        
+        <div class="container">
+
+            <div class="text-center">
+                <h2>Notre équipe</h2>
+            </div>
+
+            <hr class="primary"/>
+
+            <div class="col-lg-6 col-sm-6 text-center">
+                <img class="img-circle img-responsive img-center" src="http://placehold.it/200x200" alt="">
+                <h3>Driss BIAZ
+                    <small>Développeur</small>
+                </h3>
+                <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
+            </div>
+            
+            <div class="col-lg-6 col-sm-6 text-center">
+                <img class="img-circle img-responsive img-center" src="http://placehold.it/200x200" alt="">
+                <h3>John Smith
+                    <small>Job Title</small>
+                </h3>
+                <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
+            </div>
+        </div>
+
+    </section>
+    <!-- Fin code Développeurs -->
+
+
+
+    <!-- Code pour la partie Footer -->
+    <footer>
+        <div class="container">
+            <hr class="primary extra"/>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p>Copyright &copy; Fait par <span class="glyphicon glyphicon-heart heart" aria-hidden="true"></span> - 
+                    Driss BIAZ - 2016</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Fin code footer -->
+
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{{ asset('js/home/jquery.fittext.js') }}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{{ asset('js/home/creative.js') }}"></script>
+
+</body>
+
+</html>

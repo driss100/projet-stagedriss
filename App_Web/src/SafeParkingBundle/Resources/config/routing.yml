@@ -1,0 +1,3 @@
+safe_parking_homepage:
+    path:     /
+    defaults: { _controller: SafeParkingBundle:Home:index }
