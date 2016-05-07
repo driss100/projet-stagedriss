@@ -1,4 +1,6 @@
 safe_parking:
     resource: "@SafeParkingBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /safeparking
+
+
 

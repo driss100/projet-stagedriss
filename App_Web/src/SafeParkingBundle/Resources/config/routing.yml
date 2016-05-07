@@ -1,3 +1,27 @@
 safe_parking_homepage:
     path:     /
     defaults: { _controller: SafeParkingBundle:Home:index }
+
+safe_parking_admin_homepage:
+    path:     /admin
+    defaults: { _controller: SafeParkingBundle:Admin:index }
+
+safe_parking_admin_addProprietaire:
+    path:     /admin/add
+    defaults: { _controller: SafeParkingBundle:Admin:addProprietaire }
+
+safe_parking_admin_deleteProprietaire:
+    path:     /admin/delete/{id}
+    defaults: { _controller: SafeParkingBundle:Admin:deleteProprietaire }
+    requirements:
+        id: \d+
+
+safe_parking_admin_editProprietaire:
+    path:     /admin/edit/{id}
+    defaults: { _controller: SafeParkingBundle:Admin:editProprietaire }
+    requirements:
+        id: \d+
+
+safe_parking_login_loginpage:
+    path:     /login
+    defaults: { _controller: SafeParkingBundle:Login:index }
