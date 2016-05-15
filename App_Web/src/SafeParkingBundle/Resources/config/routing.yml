@@ -25,3 +25,7 @@ safe_parking_admin_editProprietaire:
 safe_parking_login_loginpage:
     path:     /login
     defaults: { _controller: SafeParkingBundle:Login:index }
+
+safe_parking_login_logout:
+    path:     /logout
+    defaults: { _controller: SafeParkingBundle:Login:logout }

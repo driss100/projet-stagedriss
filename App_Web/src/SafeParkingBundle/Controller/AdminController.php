@@ -11,6 +11,19 @@ class AdminController extends Controller
 {
     public function indexAction()
     {
+        /*
+         * Gestion d'accès à la page avec le rôle admin
+         */
+        $session = $this->get('session');
+
+        if( $session->has('role') && $session->get('role') == 'admin') {
+
+        }else{
+            $this->get('session')->getFlashBag()->add('error', 'Vous n\'avez pas le droit d\'accéder à cette page 
+            avec le rôle de votre compte. Veuillez vous connecter autant qu\'administrateur');
+            return $this->redirect($this->generateUrl('safe_parking_login_loginpage'));
+        }
+
         $proprietaireRepository = $this->getDoctrine()->getManager()->getRepository('SafeParkingBundle:Proprietaire');
 
         $proprietaires = $proprietaireRepository->findAll();
@@ -22,10 +35,24 @@ class AdminController extends Controller
 
     public function addProprietaireAction(Request $request)
     {
+        /*
+         * Gestion d'accès à la page avec le rôle admin
+         */
+        $session = $this->get('session');
+
+        if( $session->has('role') && $session->get('role') == 'admin') {
+
+        }else{
+            $this->get('session')->getFlashBag()->add('error', 'Vous n\'avez pas le droit d\'accéder à cette page 
+            avec le rôle de votre compte. Veuillez vous connecter autant qu\'administrateur');
+            return $this->redirect($this->generateUrl('safe_parking_login_loginpage'));
+        }
+
+
         $proprietaire = new Proprietaire();
 
         $form = $this->get('form.factory')->create(ProprietaireType::class, $proprietaire);
-
+        $form->remove('login');
         $form->handleRequest($request);
         
         if($form->get('cancel')->isClicked()){
@@ -36,7 +63,7 @@ class AdminController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($proprietaire);
             $em->flush();
-            $request->getSession()->getFlashBag()->add('notice', 'Propriétaire bien enregistré.');
+            $this->get('session')->getFlashBag()->add('notice', 'Le propriétaire a bien été enregistré.');
 
             return $this->redirect($this->generateUrl('safe_parking_admin_homepage'));
         }
@@ -49,12 +76,27 @@ class AdminController extends Controller
     }
 
     public function editProprietaireAction($id, Request $request){
+        /*
+         * Gestion d'accès à la page avec le rôle admin
+         */
+        $session = $this->get('session');
+
+        if( $session->has('role') && $session->get('role') == 'admin') {
+
+        }else{
+            $this->get('session')->getFlashBag()->add('error', 'Vous n\'avez pas le droit d\'accéder à cette page 
+            avec le rôle de votre compte. Veuillez vous connecter autant qu\'administrateur');
+            return $this->redirect($this->generateUrl('safe_parking_login_loginpage'));
+        }
+
+
         $proprietaireRepository = $this->getDoctrine()->getManager()->getRepository('SafeParkingBundle:Proprietaire');
 
         $proprietaire = $proprietaireRepository->find($id);
 
         $form = $this->get('form.factory')->create(ProprietaireType::class, $proprietaire);
         $form->remove('password');
+        $form->remove('login');
 
         $form->handleRequest($request);
 
@@ -66,7 +108,7 @@ class AdminController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($proprietaire);
             $em->flush();
-            $request->getSession()->getFlashBag()->add('notice', 'Propriétaire bien enregistré.');
+            $this->get('session')->getFlashBag()->add('notice', 'Le propriétaire a bien été modifié.');
 
             return $this->redirect($this->generateUrl('safe_parking_admin_homepage'));
         }
@@ -78,6 +120,20 @@ class AdminController extends Controller
     }
 
     public function deleteProprietaireAction($id){
+        /*
+         * Gestion d'accès à la page avec le rôle admin
+         */
+        $session = $this->get('session');
+
+        if( $session->has('role') && $session->get('role') == 'admin') {
+
+        }else{
+            $this->get('session')->getFlashBag()->add('error', 'Vous n\'avez pas le droit d\'accéder à cette page 
+            avec le rôle de votre compte. Veuillez vous connecter autant qu\'administrateur');
+            return $this->redirect($this->generateUrl('safe_parking_login_loginpage'));
+        }
+
+
         $proprietaireRepository = $this->getDoctrine()->getManager()->getRepository('SafeParkingBundle:Proprietaire');
 
         $proprietaire = $proprietaireRepository->find($id);

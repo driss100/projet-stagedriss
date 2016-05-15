@@ -194,27 +194,4 @@ class Proprietaire
     {
         return $this->parkings;
     }
-
-    /**
-     * Set role
-     *
-     * @param string $role
-     * @return Proprietaire
-     */
-    public function setRole($role)
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-
-    /**
-     * Get role
-     *
-     * @return string 
-     */
-    public function getRole()
-    {
-        return $this->role;
-    }
 }
