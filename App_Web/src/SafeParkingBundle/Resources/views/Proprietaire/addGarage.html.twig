@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Safe Parking</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="{{ asset('css/admin/metisMenu.min.css') }}" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="{{ asset('css/admin/dataTables.bootstrap.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ asset('css/admin/sb-admin-2.css') }}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{{ asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+        #map {
+            width: 500px;
+            height: 400px;
+            margin: 0 auto;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ path('safe_parking_proprietaire_homepage') }}">Safe Parking</a>
+        </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="{{ path('safe_parking_login_logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+        <!-- /.navbar-top-links -->
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="{{ path('safe_parking_proprietaire_homepage') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+
+    <div id="page-wrapper">
+
+        <!-- Titre du formulaire d'ajout de propriétaire -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Ajout d'un garage</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-5 col-sm-offset-1">
+                <div class="well">
+
+
+
+                    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+                    {{ form_errors(form) }}
+
+                    <div class="form-group">
+
+                        {{ form_label(form.nom, "Nom", {'label_attr':{'class':'col-sm-3 control-label'}}) }}
+
+                        {{ form_errors(form.nom) }}
+
+                        <div class="col-sm-4">
+                            {# Génération de l'input. #}
+                            {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.latitude, "Latitude", {'label_attr':{'class':'col-sm-3 control-label'}}) }}
+
+                        {{ form_errors(form.latitude) }}
+
+                        <div class="col-sm-4">
+                            {# Génération de l'input. #}
+                            {{ form_widget(form.latitude, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.longitude, "Longitude", {'label_attr':{'class':'col-sm-3 control-label'}}) }}
+
+                        {{ form_errors(form.longitude) }}
+
+                        <div class="col-sm-4">
+                            {# Génération de l'input. #}
+                            {{ form_widget(form.longitude, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.nbPlaceTotal, "Nombre de place total", {'label_attr':{'class':'col-sm-3 control-label'}}) }}
+
+                        {{ form_errors(form.nbPlaceTotal) }}
+
+                        <div class="col-sm-4">
+                            {# Génération de l'input. #}
+                            {{ form_widget(form.nbPlaceTotal, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+
+                    <div class="form-group text-center">
+                        {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+                        {{ form_widget(form.save, {'attr': {'class': 'btn btn-success'}}) }}
+                        {{ form_widget(form.cancel, {'attr': {'class': 'btn btn-warning'}}) }}
+                    </div>
+
+
+                    {# Fermeture de la balise <form> du formulaire HTML #}
+                    {{ form_end(form) }}
+
+                </div>
+
+            </div>
+            <div class="col-sm-6 map">
+                <div class="google-map-canvas" id="map">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+<script src="{{ asset('js/jquery.js') }}"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="{{ asset('js/admin/metisMenu.min.js') }}"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="{{ asset('js/admin/sb-admin-2.js') }}"></script>
+
+<script>
+    var gmarkers = [];
+
+    var fes = new google.maps.LatLng(34.0371500	, -4.9998000);
+
+
+    function initMap() {
+        var initialLocation;
+
+        var browserSupportFlag =  new Boolean();
+
+
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+            center: {lat: 34.0371500, lng: -4.9998000},
+            zoom: 8
+        });
+
+        if(navigator.geolocation) {
+            browserSupportFlag = true;
+            navigator.geolocation.getCurrentPosition(function(position) {
+                initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+                map.setCenter(initialLocation);
+            }, function() {
+                handleNoGeolocation(browserSupportFlag);
+            });
+        }
+        // Browser doesn't support Geolocation
+        else {
+            browserSupportFlag = false;
+            handleNoGeolocation(browserSupportFlag);
+        }
+
+
+        google.maps.event.addListener(map, 'click', function (event) {
+            removeMarkers();
+            displayCoordinates(event.latLng);
+            var marker = new google.maps.Marker({
+                position: event.latLng,
+                title:"Hello World!"
+            });
+
+            // Affiche le marker sur la carte
+            marker.setMap(map);
+
+            // Ajoute le marker au tableau global
+            gmarkers.push(marker);
+        });
+
+
+    }
+
+    //Gère le non support de la géolocalisation
+    function handleNoGeolocation(errorFlag) {
+        if (errorFlag == true) {
+            alert("Le service de géolocalisation a échoué.");
+            initialLocation = fes;
+        } else {
+            alert("Votre navigateur ne supporte pas la géolocalisation. On vous a placé à Fès.");
+            initialLocation = fes;
+        }
+        map.setCenter(initialLocation);
+    }
+
+    // Met les valeurs du marker dans les inputs
+    function displayCoordinates(pnt) {
+        var latitude = document.getElementById('garage_latitude');
+        var longitude = document.getElementById('garage_longitude');
+        var lat = pnt.lat();
+        var lng = pnt.lng();
+        latitude.value = lat;
+        longitude.value = lng;
+    }
+
+    /**
+     * Supprime les markers précédents sur la carte
+     */
+    function removeMarkers(){
+        for(i=0; i<gmarkers.length; i++){
+            gmarkers[i].setMap(null);
+        }
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script>
+
+
+</body>
+
+</html>

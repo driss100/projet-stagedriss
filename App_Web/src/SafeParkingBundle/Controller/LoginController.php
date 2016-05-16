@@ -19,11 +19,8 @@ class LoginController extends Controller
             /*
              * redirection vers le dashboard des propriétaires
              */
-            //à changer avec la bonne url
-            return $this->redirect($this->generateUrl('safe_parking_admin_homepage'));
+            return $this->redirect($this->generateUrl('safe_parking_proprietaire_homepage'));
         }
-
-
 
         $admin = new Admin();
 
@@ -46,7 +43,8 @@ class LoginController extends Controller
                      * Il faut remplir les variables de session
                      */
                     $session->set('role', 'admin');
-                    $session->set('email', $emailResult);
+                    $session->set('email', $emailResult->getEmail());
+                    $session->set('entity', $emailResult);
 
                     return $this->redirect($this->generateUrl('safe_parking_admin_homepage'));
                 }else{
@@ -63,10 +61,11 @@ class LoginController extends Controller
                          * et renvoyer vers la page dashboard des propriétaires
                          */
                         $session->set('role', 'proprietaire');
-                        $session->set('email', $emailResult);
+                        $session->set('email', $emailResult->getEmail());
+                        $session->set('entity', $emailResult);
 
                         //à changer avec la bonne url
-                        return $this->redirect($this->generateUrl('safe_parking_admin_homepage'));
+                        return $this->redirect($this->generateUrl('safe_parking_proprietaire_homepage'));
 
                     }else{
                         $this->get('session')->getFlashBag()->add('error', 'Le mot de passe ne correspond pas à l\'e-mail
@@ -95,6 +94,7 @@ class LoginController extends Controller
         if($session->has('role') && $session->has('email')){
             $session->remove('role');
             $session->remove('email');
+            $session->remove('entity');
             $session->clear();
         }
 

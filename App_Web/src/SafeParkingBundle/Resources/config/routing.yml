@@ -29,3 +29,39 @@ safe_parking_login_loginpage:
 safe_parking_login_logout:
     path:     /logout
     defaults: { _controller: SafeParkingBundle:Login:logout }
+
+safe_parking_proprietaire_homepage:
+    path:     /proprietaire
+    defaults: { _controller: SafeParkingBundle:Proprietaire:index }
+
+safe_parking_proprietaire_addGarage:
+    path:     /proprietaire/add/garage
+    defaults: { _controller: SafeParkingBundle:Proprietaire:addGarage }
+
+safe_parking_proprietaire_editGarage:
+    path:     /proprietaire/edit/garage/{id}
+    defaults: { _controller: SafeParkingBundle:Proprietaire:editGarage }
+    requirements:
+        id: \d+
+
+safe_parking_proprietaire_deleteGarage:
+    path:     /proprietaire/delete/garage/{id}
+    defaults: { _controller: SafeParkingBundle:Proprietaire:deleteGarage }
+    requirements:
+        id: \d+
+
+safe_parking_proprietaire_addGardien:
+    path:     /proprietaire/add/gardien
+    defaults: { _controller: SafeParkingBundle:Proprietaire:addGardien }
+
+safe_parking_proprietaire_editGardien:
+    path:     /proprietaire/edit/gardien/{id}
+    defaults: { _controller: SafeParkingBundle:Proprietaire:editGardien }
+    requirements:
+        id: \d+
+
+safe_parking_proprietaire_deleteGardien:
+    path:     /proprietaire/delete/gardien/{id}
+    defaults: { _controller: SafeParkingBundle:Proprietaire:deleteGardien }
+    requirements:
+        id: \d+

@@ -48,7 +48,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">Safe Parking</a>
+            <a class="navbar-brand" href="{{ path('safe_parking_proprietaire_homepage') }}">Safe Parking</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -71,7 +71,7 @@
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        <a href="{{ path('safe_parking_proprietaire_homepage') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
                 </ul>
             </div>
@@ -82,10 +82,10 @@
 
     <div id="page-wrapper">
 
-        <!-- Titre du formulaire d'édition de propriétaire -->
+        <!-- Titre du formulaire d'édition de garage -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Edition d'un propriétaire</h1>
+                <h1 class="page-header">Edition d'un garage</h1>
             </div>
         </div>
 
@@ -109,24 +109,35 @@
             </div>
 
             <div class="form-group">
-                {{ form_label(form.prenom, "Prénom", {'label_attr':{'class':'col-sm-3 control-label'}}) }}
+                {{ form_label(form.latitude, "Latitude", {'label_attr':{'class':'col-sm-3 control-label'}}) }}
 
-                {{ form_errors(form.prenom) }}
+                {{ form_errors(form.latitude) }}
 
                 <div class="col-sm-4">
                     {# Génération de l'input. #}
-                    {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_widget(form.latitude, {'attr': {'class': 'form-control'}}) }}
                 </div>
             </div>
 
             <div class="form-group">
-                {{ form_label(form.email, "Email", {'label_attr':{'class':'col-sm-3 control-label'}}) }}
+                {{ form_label(form.longitude, "Longitude", {'label_attr':{'class':'col-sm-3 control-label'}}) }}
 
-                {{ form_errors(form.email) }}
+                {{ form_errors(form.longitude) }}
 
                 <div class="col-sm-4">
                     {# Génération de l'input. #}
-                    {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_widget(form.longitude, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.nbPlaceTotal, "Nombre de place total", {'label_attr':{'class':'col-sm-3 control-label'}}) }}
+
+                {{ form_errors(form.nbPlaceTotal) }}
+
+                <div class="col-sm-4">
+                    {# Génération de l'input. #}
+                    {{ form_widget(form.nbPlaceTotal, {'attr': {'class': 'form-control'}}) }}
                 </div>
             </div>
 

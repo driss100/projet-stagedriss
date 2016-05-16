@@ -25,11 +25,19 @@ class AdminController extends Controller
         }
 
         $proprietaireRepository = $this->getDoctrine()->getManager()->getRepository('SafeParkingBundle:Proprietaire');
+        $garageRepository = $this->getDoctrine()->getManager()->getRepository('SafeParkingBundle:Garage');
+        $gardienRepository = $this->getDoctrine()->getManager()->getRepository('SafeParkingBundle:Gardien');
 
         $proprietaires = $proprietaireRepository->findAll();
+        $garages = $garageRepository->findAll();
+        $gardiens = $gardienRepository->findAll();
+
+
 
         return $this->render('SafeParkingBundle:Admin:index.html.twig', array(
-            'proprietaires' => $proprietaires
+            'proprietaires' => $proprietaires,
+            'garages' => $garages,
+            'gardiens' => $gardiens
         ));
     }
 

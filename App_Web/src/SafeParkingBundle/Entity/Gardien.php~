@@ -2,16 +2,15 @@
 
 namespace SafeParkingBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Proprietaire
+ * Gardien
  *
- * @ORM\Table(name="proprietaire")
- * @ORM\Entity(repositoryClass="SafeParkingBundle\Repository\ProprietaireRepository")
+ * @ORM\Table(name="gardien")
+ * @ORM\Entity(repositoryClass="SafeParkingBundle\Repository\GardienRepository")
  */
-class Proprietaire
+class Gardien
 {
     /**
      * @var int
@@ -51,24 +50,18 @@ class Proprietaire
     private $password;
 
     /**
-     * @var array
-     *
-     * @ORM\Column(name="parkings", type="array")
+     * @ORM\ManyToOne(targetEntity="SafeParkingBundle\Entity\Garage", inversedBy="gardiens", cascade={"persist",
+     *     "remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $parkings;
+    private $parking;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="role", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="SafeParkingBundle\Entity\Proprietaire")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $role;
+    private $proprietaire;
 
-    public function __construct()
-    {
-        $this->parkings = new ArrayCollection();
-        $this->role = "proprietaire";
-    }
 
     /**
      * Get id
@@ -84,7 +77,7 @@ class Proprietaire
      * Set nom
      *
      * @param string $nom
-     * @return Proprietaire
+     * @return Gardien
      */
     public function setNom($nom)
     {
@@ -107,7 +100,7 @@ class Proprietaire
      * Set prenom
      *
      * @param string $prenom
-     * @return Proprietaire
+     * @return Gardien
      */
     public function setPrenom($prenom)
     {
@@ -130,7 +123,7 @@ class Proprietaire
      * Set email
      *
      * @param string $email
-     * @return Proprietaire
+     * @return Gardien
      */
     public function setEmail($email)
     {
@@ -153,7 +146,7 @@ class Proprietaire
      * Set password
      *
      * @param string $password
-     * @return Proprietaire
+     * @return Gardien
      */
     public function setPassword($password)
     {
@@ -173,48 +166,48 @@ class Proprietaire
     }
 
     /**
-     * Set parkings
+     * Set parking
      *
-     * @param array $parkings
-     * @return Proprietaire
+     * @param \SafeParkingBundle\Entity\Garage $parking
+     * @return Gardien
      */
-    public function setParkings($parkings)
+    public function setParking(\SafeParkingBundle\Entity\Garage $parking)
     {
-        $this->parkings = $parkings;
+        $this->parking = $parking;
 
         return $this;
     }
 
     /**
-     * Get parkings
+     * Get parking
      *
-     * @return array 
+     * @return \SafeParkingBundle\Entity\Garage 
      */
-    public function getParkings()
+    public function getParking()
     {
-        return $this->parkings;
+        return $this->parking;
     }
 
     /**
-     * Set role
+     * Set proprietaire
      *
-     * @param string $role
-     * @return Proprietaire
+     * @param \SafeParkingBundle\Entity\Proprietaire $proprietaire
+     * @return Gardien
      */
-    public function setRole($role)
+    public function setProprietaire(\SafeParkingBundle\Entity\Proprietaire $proprietaire)
     {
-        $this->role = $role;
+        $this->proprietaire = $proprietaire;
 
         return $this;
     }
 
     /**
-     * Get role
+     * Get proprietaire
      *
-     * @return string 
+     * @return \SafeParkingBundle\Entity\Proprietaire 
      */
-    public function getRole()
+    public function getProprietaire()
     {
-        return $this->role;
+        return $this->proprietaire;
     }
 }
