@@ -65,3 +65,7 @@ safe_parking_proprietaire_deleteGardien:
     defaults: { _controller: SafeParkingBundle:Proprietaire:deleteGardien }
     requirements:
         id: \d+
+
+safe_parking_rest_gardien:
+    path:     /rest/gardien/{email}/{password}
+    defaults: { _controller: SafeParkingBundle:Rest:login }

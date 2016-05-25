@@ -13,9 +13,9 @@ class LoginController extends Controller
     {
         $session = $this->get('session');
 
-        if($session->get('role') == 'admin'){
+        if ($session->get('role') == 'admin') {
             return $this->redirect($this->generateUrl('safe_parking_admin_homepage'));
-        }elseif($session->get('role') == 'proprietaire'){
+        } elseif ($session->get('role') == 'proprietaire') {
             /*
              * redirection vers le dashboard des propriétaires
              */
@@ -29,7 +29,7 @@ class LoginController extends Controller
 
         $form->handleRequest($request);
 
-        if($form->isValid()){
+        if ($form->isValid()) {
 
             $adminRepository = $this->getDoctrine()->getManager()->getRepository('SafeParkingBundle:Admin');
             $proprietaireRepository = $this->getDoctrine()->getManager()->getRepository
@@ -37,8 +37,8 @@ class LoginController extends Controller
 
 
             $emailResult = $adminRepository->findOneByEmail($admin->getEmail());
-            if($emailResult != null){
-                if($emailResult->getPassword() == $admin->getPassword()){
+            if ($emailResult != null) {
+                if ($emailResult->getPassword() == $admin->getPassword()) {
                     /**
                      * Il faut remplir les variables de session
                      */
@@ -47,15 +47,15 @@ class LoginController extends Controller
                     $session->set('entity', $emailResult);
 
                     return $this->redirect($this->generateUrl('safe_parking_admin_homepage'));
-                }else{
+                } else {
                     $this->get('session')->getFlashBag()->add('error', 'Le mot de passe ne correspond pas à l\'e-mail
                      que vous avez saisi.');
                     return $this->redirect($this->generateUrl('safe_parking_login_loginpage'));
                 }
-            }else{
+            } else {
                 $emailResult = $proprietaireRepository->findOneByEmail($admin->getEmail());
-                if($emailResult != null){
-                    if($emailResult->getPassword() == $admin->getPassword()){
+                if ($emailResult != null) {
+                    if ($emailResult->getPassword() == $admin->getPassword()) {
                         /**
                          * Il faut remplir les variables de session
                          * et renvoyer vers la page dashboard des propriétaires
@@ -67,12 +67,12 @@ class LoginController extends Controller
                         //à changer avec la bonne url
                         return $this->redirect($this->generateUrl('safe_parking_proprietaire_homepage'));
 
-                    }else{
+                    } else {
                         $this->get('session')->getFlashBag()->add('error', 'Le mot de passe ne correspond pas à l\'e-mail
                      que vous avez saisi.');
                         return $this->redirect($this->generateUrl('safe_parking_login_loginpage'));
                     }
-                }else{
+                } else {
                     $this->get('session')->getFlashBag()->add('error', 'Aucun compte n\'est enregistré avec cet e-mail. 
                 Veuillez contactez l\'administrateur pour toute information supplémentaire');
                     return $this->redirect($this->generateUrl('safe_parking_login_loginpage'));
@@ -88,10 +88,11 @@ class LoginController extends Controller
         ));
     }
 
-    public function logoutAction(){
+    public function logoutAction()
+    {
         $session = $this->get('session');
 
-        if($session->has('role') && $session->has('email')){
+        if ($session->has('role') && $session->has('email')) {
             $session->remove('role');
             $session->remove('email');
             $session->remove('entity');

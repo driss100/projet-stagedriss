@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SafeParkingPro</string>
+    <string name="emailHint">E-mail</string>
+    <string name="btnLoginText">Se connecter</string>
+    <string name="passwordHint">Mot de passe</string>
+    <string name="internetAlertMessage">Votre téléphone n\'est pas connecté à internet. Veuillez vérifier votre configuration!</string>
+</resources>
