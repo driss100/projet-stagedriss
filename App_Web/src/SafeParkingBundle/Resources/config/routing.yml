@@ -69,3 +69,23 @@ safe_parking_proprietaire_deleteGardien:
 safe_parking_rest_gardien:
     path:     /rest/gardien/{email}/{password}
     defaults: { _controller: SafeParkingBundle:Rest:login }
+
+safe_parking_rest_garage:
+    path:     /rest/garage/{id}
+    defaults: { _controller: SafeParkingBundle:Rest:info }
+
+safe_parking_rest_garage_add:
+    path:     /rest/garage/{id}/add
+    defaults: { _controller: SafeParkingBundle:Rest:add }
+
+safe_parking_rest_garage_sub:
+    path:     /rest/garage/{id}/sub
+    defaults: { _controller: SafeParkingBundle:Rest:sub }
+
+safe_parking_rest_garage_add_reserve:
+    path:     /rest/garage/{id}/add/reserve
+    defaults: { _controller: SafeParkingBundle:Rest:addres }
+
+safe_parking_rest_garage_sub_reserve:
+    path:     /rest/garage/{id}/sub/reserve
+    defaults: { _controller: SafeParkingBundle:Rest:subres }

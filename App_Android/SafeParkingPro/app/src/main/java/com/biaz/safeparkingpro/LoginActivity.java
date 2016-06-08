@@ -185,17 +185,15 @@ public class LoginActivity extends AppCompatActivity {
 
         public void responseHandler(String reponse) throws JSONException {
             boolean found = JsonConverter.ConnectionResponse(reponse);
-            if(found){
-                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                builder.setTitle("Connexion").setMessage("Connexion réussie!")
-                        .setCancelable(false)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
 
-                            }
-                        });
-                AlertDialog alert = builder.create();
-                alert.show();
+            if(found){
+                String garageName = JsonConverter.getGarageName(reponse);
+                int garageId = JsonConverter.getGarageId(reponse);
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                intent.putExtra("garageName", garageName);
+                intent.putExtra("garageId", garageId);
+
+                startActivity(intent);
             }else{
                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                 builder.setTitle("Problème de connexion").setMessage("Veuillez vérifier vos identifiants de connexion!")

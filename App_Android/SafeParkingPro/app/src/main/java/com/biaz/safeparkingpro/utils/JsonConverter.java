@@ -15,4 +15,29 @@ public class JsonConverter {
             return false;
         }
     }
+
+    public static String getGarageName(String response) throws JSONException{
+        JSONObject jsonObject = new JSONObject(response);
+        return jsonObject.getString("garage");
+    }
+
+    public static int getGarageId(String response) throws JSONException{
+        JSONObject jsonObject = new JSONObject(response);
+        return jsonObject.getInt("id");
+    }
+
+    public static int getOccupe(String response) throws JSONException{
+        JSONObject jsonObject = new JSONObject(response);
+        return jsonObject.getInt("occupe");
+    }
+
+    public static int getLibre(String response) throws JSONException{
+        JSONObject jsonObject = new JSONObject(response);
+        return jsonObject.getInt("libre");
+    }
+
+    public static int getReserve(String response) throws JSONException{
+        JSONObject jsonObject = new JSONObject(response);
+        return jsonObject.getInt("reserve");
+    }
 }
