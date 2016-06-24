@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SafeParking</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="gpsDialogTitle">Attention</string>
+    <string name="gpsAlertMessage">Le GPS de votre mobile est désactivé. Veuillez l\\\'activer pour vous localiser!</string>
+    <string name="enableGPS">Activer mon GPS</string>
+    <string name="internetAlertMessage">Votre téléphone n\'est pas connecté à internet. Veuillez vous connecter d\'abord!</string>
+</resources>

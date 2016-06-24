@@ -165,4 +165,28 @@ class RestController extends Controller
         $response->headers->set('Content-type', 'application/json');
         return $response;
     }
+
+    public function listAction(){
+
+        $garageRepository = $this->getDoctrine()->getManager()->getRepository('SafeParkingBundle:Garage');
+        $garages = $garageRepository->findAll();
+
+        $resp= "[";
+        $content = "";
+
+        foreach ($garages as $garage){
+            $string = '{"nom":"'.$garage->getNom().'", "occupe":'.$garage->getNbPlacePrise().', "libre":'
+                .$garage->getNbPlaceLibre().',"reserve":'.$garage->getNbPlaceReserve().', "latitude":'
+                .$garage->getLatitude().', "longitude":'.$garage->getLongitude().'}';
+            $content.=$string.",";
+        }
+
+        $content = substr($content, 0, -1);
+
+        $resp = $resp.$content."]";
+
+        $response = new Response($resp);
+        $response->headers->set('Content-type', 'application/json');
+        return $response;
+    }
 }
