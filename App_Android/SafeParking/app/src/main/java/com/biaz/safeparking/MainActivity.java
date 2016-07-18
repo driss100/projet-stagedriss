@@ -91,7 +91,6 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
                         }
                     }).create().show();
         }
-
     }
 
     private boolean isConnected() {
@@ -135,9 +134,8 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
                         if(myMarker != null){
                             cleanMapFromMyMarker();
                         }
-                        myMarker = mMap.addMarker(new MarkerOptions().position(new LatLng(location
-                                .getLatitude(),
-                                location.getLongitude())).title("Je suis là").icon(BitmapDescriptorFactory
+                        myMarker = mMap.addMarker(new MarkerOptions().position(new LatLng(34.017184,
+                                -4.969807)).title("Je suis là").icon(BitmapDescriptorFactory
                                 .fromResource(R.mipmap.car)));
                         moveCamera();
                     }

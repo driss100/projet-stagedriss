@@ -51,9 +51,9 @@ class Proprietaire
     private $password;
 
     /**
-     * @var array
      *
-     * @ORM\Column(name="parkings", type="array")
+     * @ORM\OneToMany(targetEntity="SafeParkingBundle\Entity\Garage", mappedBy="proprietaire",
+     *     cascade={"persist", "remove"})
      */
     private $parkings;
 
